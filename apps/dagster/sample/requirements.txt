@@ -9,6 +9,7 @@ coloredlogs==14.0
 croniter==1.4.1
 dagster==1.4.2
 dagster-graphql==1.4.2
+dagster-postgres==0.20.2
 dagster-webserver==1.4.2
 docstring-parser==0.15
 fsspec==2023.6.0
@@ -30,6 +31,7 @@ multidict==6.0.4
 packaging==23.1
 pendulum==2.1.2
 protobuf==4.23.4
+psycopg2-binary==2.9.6
 pydantic==1.10.12
 python-dateutil==2.8.2
 python-dotenv==1.0.0
