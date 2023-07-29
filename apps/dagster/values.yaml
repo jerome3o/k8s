@@ -1,0 +1,12 @@
+dagster-user-deployments:
+  enabled: true
+  deployments:
+    - name: "dagster-sample"
+      image:
+        repository: "docker.io/jerome3o/dagster-sample"
+        tag: latest
+        pullPolicy: Always
+      dagsterApiGrpcArgs:
+        - "--python-file"
+        - "main.py"
+      port: 3030
