@@ -10,3 +10,10 @@ dagster-user-deployments:
         - "--python-file"
         - "main.py"
       port: 3030
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  dagsterWebserver:
+    path: "/"
+    host: "dagster.k8s.jeromswannack.com"
