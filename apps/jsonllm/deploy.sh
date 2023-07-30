@@ -1,7 +1,8 @@
 kubectl create namespace jsonllm
 kubectl apply -n jsonllm \
-    -f deployment.yaml \
-    -f service.yaml \
-    -f ingress.yaml \
-    -f pv.yaml \
-    -f pvc.yaml
+    -f manifests/namespace.yaml \
+    -f manifests/deployment.yaml \
+    -f manifests/service.yaml \
+    -f manifests/ingress.yaml \
+    -f manifests/pv.yaml \
+    -f manifests/pvc.yaml
