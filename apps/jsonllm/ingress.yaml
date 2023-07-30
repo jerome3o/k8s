@@ -3,6 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jsonllm-ingress
+  namespace: jsonllm
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
