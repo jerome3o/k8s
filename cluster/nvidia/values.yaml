@@ -1,5 +1,8 @@
 runtimeClassName: nvidia
 
+nodeSelector:
+  gpu: nvidia
+
 config:
   map:
     config: |
