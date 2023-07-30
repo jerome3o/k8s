@@ -1,4 +1,6 @@
-kubectl apply -f runtime-class.yaml -n nvidia-device-plugin
+kubectl apply \
+  -f manifests/namespace.yaml \
+  -f manifests/runtime-class.yaml
 
 helm upgrade -i nvdp nvdp/nvidia-device-plugin \
   --namespace nvidia-device-plugin \
