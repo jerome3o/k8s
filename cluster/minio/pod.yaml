@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: minio
-  name: minio
+    app: minio-dev
+  name: minio-dev
   namespace: minio-dev
 spec:
   containers:
