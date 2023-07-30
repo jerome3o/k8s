@@ -80,3 +80,12 @@ mv k9s_Linux_amd64/k9s ~/.local/bin
 rm k9s_Linux_amd64.tar.gz
 rm -rf k9s_Linux_amd64/
 ```
+
+### Install [kubeseal](https://github.com/bitnami-labs/sealed-secrets#linux)
+
+```sh
+wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.23.0/kubeseal-0.23.0-linux-amd64.tar.gz
+tar -xvzf kubeseal-0.23.0-linux-amd64.tar.gz kubeseal
+sudo install -m 755 kubeseal /usr/local/bin/kubeseal
+rm kubeseal kubeseal-0.23.0-linux-amd64.tar.gz
+```
