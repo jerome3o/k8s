@@ -13,7 +13,9 @@ dagster-user-deployments:
 
 ingress:
   enabled: true
-  ingressClassName: traefik
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
   dagsterWebserver:
     path: "/"
-    host: "dagster.k8s.jeromswannack.com"
+    pathType: Prefix
+    host: "dagster.k8s.jeromeswannack.com"
