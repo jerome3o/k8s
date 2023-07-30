@@ -18,6 +18,31 @@ curl -sfL https://get.k3s.io | K3S_URL=https://${tailscale_ip_of_flatserver}:644
 
 Where `node_token` was located on the server at `/var/lib/rancher/k3s/server/node-token`
 
+### GPU Nodes
+
+Following [this](https://github.com/NVIDIA/k8s-device-plugin#quick-start).
+
+Add this to `/etc/containerd/config.toml`, I also removed "cri" from the disabled plugins list
+
+```toml
+version = 2
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    [plugins."io.containerd.grpc.v1.cri".containerd]
+      default_runtime_name = "nvidia"
+
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+          privileged_without_host_devices = false
+          runtime_engine = ""
+          runtime_root = ""
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
+            BinaryName = "/usr/bin/nvidia-container-runtime"
+```
+
+
+
 ## On the dev pc
 
 ### Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
