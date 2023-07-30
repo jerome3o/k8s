@@ -26,4 +26,11 @@ spec:
         # add env vars here
         env:
         - name: MODEL_PATH
-          value: gpt2
+          value: /model
+        volumeMounts:
+        - name: jsonllm-pv
+          mountPath: /model
+      volumes:
+      - name: jsonllm-pv
+        persistentVolumeClaim:
+          claimName: jsonllm-pvc

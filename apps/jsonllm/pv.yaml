@@ -1,0 +1,23 @@
+# this would normally be done by server admin
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jsonllm-pv
+spec:
+  capacity:
+    storage: 30Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /mnt/raid/k8s/jsonllm
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - mlrig
