@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: minio
+  name: minio
+  namespace: minio-dev
+spec:
+  containers:
+  - name: minio
+    image: quay.io/minio/minio:latest
+    command:
+    - /bin/bash
+    - -c
+    args:
+    - minio server /data --console-address :9090
+    volumeMounts:
+    - mountPath: /data
+      name: dev-volume
+  nodeSelector:
+    kubernetes.io/hostname: mlrig
+  volumes:
+  - name: dev-volume
+    persistentVolumeClaim:
+      claimName: minio-dev-pvc

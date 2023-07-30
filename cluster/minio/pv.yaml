@@ -2,17 +2,17 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: jsonllm-pv
+  name: minio-dev-pv
 spec:
   capacity:
-    storage: 30Gi
+    storage: 200Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
+  persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/raid/k8s/jsonllm
+    path: /mnt/raid/k8s/minio/dev
   nodeAffinity:
     required:
       nodeSelectorTerms:
