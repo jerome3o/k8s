@@ -22,7 +22,7 @@ Where `node_token` was located on the server at `/var/lib/rancher/k3s/server/nod
 
 Following [this](https://github.com/NVIDIA/k8s-device-plugin#quick-start).
 
-Add this to `/etc/containerd/config.toml`, I also removed "cri" from the disabled plugins list
+Add this to `/etc/containerd/config.toml`
 
 ```toml
 version = 2
@@ -40,8 +40,6 @@ version = 2
           [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
             BinaryName = "/usr/bin/nvidia-container-runtime"
 ```
-
-
 
 ## On the dev pc
 
