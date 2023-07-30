@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jsonllm-deployment
+  labels:
+    app: jsonllm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jsonllm
+  template:
+    metadata:
+      labels:
+        app: jsonllm
+    spec:
+      runtimeClassName: nvidia
+      containers:
+      - name: jsonllm
+        image: jerome3o/jsonllm:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        # add env vars here
+        env:
+        - name: MODEL_PATH
+          value: gpt2
