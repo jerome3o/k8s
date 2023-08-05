@@ -75,7 +75,8 @@ wget https://github.com/derailed/k9s/releases/download/v0.27.4/k9s_Linux_amd64.t
 mkdir k9s_Linux_amd64
 tar -zxvf k9s_Linux_amd64.tar.gz -C k9s_Linux_amd64
 chmod +x k9s_Linux_amd64/k9s
-mv k9s_Linux_amd64/k9s ~/.local/bin
+mkdir ~/.local/bin/
+mv k9s_Linux_amd64/k9s ~/.local/bin/
 
 rm k9s_Linux_amd64.tar.gz
 rm -rf k9s_Linux_amd64/
