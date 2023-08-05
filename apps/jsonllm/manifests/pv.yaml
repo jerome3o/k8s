@@ -1,0 +1,39 @@
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "annotations": {},
+    "name": "jsonllm-pv"
+  },
+  "spec": {
+    "accessModes": [
+      "ReadWriteOnce"
+    ],
+    "capacity": {
+      "storage": "30Gi"
+    },
+    "local": {
+      "path": "/mnt/raid/k8s/jsonllm"
+    },
+    "nodeAffinity": {
+      "required": {
+        "nodeSelectorTerms": [
+          {
+            "matchExpressions": [
+              {
+                "key": "kubernetes.io/hostname",
+                "operator": "In",
+                "values": [
+                  "mlrig"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "persistentVolumeReclaimPolicy": "Delete",
+    "storageClassName": "local-storage",
+    "volumeMode": "Filesystem"
+  }
+}
