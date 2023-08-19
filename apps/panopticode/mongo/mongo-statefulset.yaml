@@ -50,6 +50,8 @@ spec:
               key: MONGO_PASS
         - name: ME_CONFIG_MONGODB_URL
           value: "mongodb://mongo:27017/"
+      nodeSelector:
+        kubernetes.io/hostname: "mlrig"
   volumeClaimTemplates:
   - metadata:
       name: mongo-storage

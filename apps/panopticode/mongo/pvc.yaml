@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongo-pvc
+  name: mongo-storage-mongo-0
   namespace: panopticode
 spec:
   storageClassName: local-storage
