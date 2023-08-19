@@ -21,13 +21,15 @@ spec:
         - containerPort: 27017
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
-          secretKeyRef:
-            name: mongo-access
-            key: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-access
+              key: MONGO_USER
         - name: MONGO_INITDB_ROOT_PASSWORD
-          secretKeyRef:
-            name: mongo-access
-            key: MONGO_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mongo-access
+              key: MONGO_PASS
         volumeMounts:
           - name: mongo-storage
             mountPath: /data/db
@@ -37,13 +39,15 @@ spec:
         - containerPort: 8081
         env:
         - name: ME_CONFIG_MONGODB_ADMINUSERNAME
-          secretKeyRef:
-            name: mongo-access
-            key: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-access
+              key: MONGO_USER
         - name: ME_CONFIG_MONGODB_ADMINPASSWORD
-          secretKeyRef:
-            name: mongo-access
-            key: MONGO_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mongo-access
+              key: MONGO_PASS
         - name: ME_CONFIG_MONGODB_URL
           value: "mongodb://mongo:27017/"
   volumeClaimTemplates:
