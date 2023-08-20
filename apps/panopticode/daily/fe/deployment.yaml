@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: daily-fe-deployment
+  name: daily-fe
   namespace: panopticode
 spec:
   replicas: 1
