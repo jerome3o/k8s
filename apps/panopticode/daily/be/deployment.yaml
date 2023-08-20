@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daily-be
+  namespace: panopticode
+  labels:
+    app: daily-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: daily-be
+  template:
+    metadata:
+      labels:
+        app: daily-be
+    spec:
+      containers:
+      - name: daily-be
+        image: jerome3o/daily-server
+        ports:
+        - containerPort: 8000
