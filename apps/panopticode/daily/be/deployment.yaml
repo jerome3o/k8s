@@ -20,3 +20,11 @@ spec:
         image: jerome3o/daily-server
         ports:
         - containerPort: 8000
+        env:
+        - name: MONGODB_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: mongo-access
+              key: MONGO_URL
+        - name: MONGODB_DATABASE
+          value: panopticode
