@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daily-fe-deployment
+  namespace: panopticode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: daily-fe
+  template:
+    metadata:
+      labels:
+        app: daily-fe
+    spec:
+      containers:
+      - name: daily-fe
+        image: jerome3o/daily-frontend
+        ports:
+        - containerPort: 80
