@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: daily-fe
+  namespace: panopticode
+spec:
+  routes:
+  - kind: Rule
+    match: Host(`daily-minio.k8s.jeromeswannack.com`)
+    middlewares:
+    - name: add-test-bucket
+      namespace: panopticode
+    services:                       # [8]
+    - kind: Service
+      name: minio-dev-service
+      namespace: minio-dev
+      port: 9000
+      scheme: http
