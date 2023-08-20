@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: daily-fe-ingress-minio
+  namespace: minio-dev
+spec:
+  rules:
+  - host: daily-minio.k8s.jeromeswannack.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: minio-dev-service
+            port:
+              number: 9000
