@@ -20,12 +20,11 @@ spec:
           image: quay.io/keycloak/keycloak
           args: ["start-dev"]
           env:
-            - name: KEYCLOAK_ADMIN
-              value: "admin"
-            - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "admin"
             - name: KC_PROXY
               value: "edge"
+          envFrom:
+            - secretRef:
+                name: keycloak-admin
           ports:
             - name: http
               containerPort: 8080
