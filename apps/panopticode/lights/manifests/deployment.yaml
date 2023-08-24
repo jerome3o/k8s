@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lights-be
+  namespace: panopticode
+  labels:
+    app: lights-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lights-be
+  template:
+    metadata:
+      labels:
+        app: lights-be
+    spec:
+      containers:
+      - name: lights-be
+        image: jerome3o/lights-server
+        ports:
+        - containerPort: 8000
+        env:
+        - name: BULB_IP
+          valueFrom:
+            secretKeyRef:
+              name: bulb-ip
+              key: BULB_IP
+        - name: REPORT_URL
+          value: http://daily-be.k8s.jeromeswannack.com/reports/today/
