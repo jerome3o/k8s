@@ -28,3 +28,5 @@ spec:
               key: BULB_IP
         - name: REPORT_URL
           value: http://daily-be.k8s.jeromeswannack.com/reports/today/
+        - name: TZ
+          value: Pacific/Auckland
