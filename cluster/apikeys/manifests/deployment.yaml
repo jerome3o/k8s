@@ -20,3 +20,6 @@ spec:
         image: jerome3o/traefik-apikeys:latest
         ports:
         - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: apikeys
