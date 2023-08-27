@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik-apikeys-deployment
+  namespace: traefik-apikeys
+  labels:
+    app: traefik-apikeys
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik-apikeys
+  template:
+    metadata:
+      labels:
+        app: traefik-apikeys
+    spec:
+      containers:
+      - name: traefik-apikeys
+        image: jerome3o/traefik-apikeys:latest
+        ports:
+        - containerPort: 8000
