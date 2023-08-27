@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Assign command line arguments
+SECRETNAME=$1
+NAMESPACE=$2
+ENVFILE=${3:-.env}  # Default value is .env if not provided
+
+# Ensure SECRETNAME and NAMESPACE are provided
+if [ -z "$SECRETNAME" ] || [ -z "$NAMESPACE" ]; then
+    echo "Error: Both SECRETNAME and NAMESPACE need to be provided."
+    echo "Usage: ./scriptname SECRETNAME NAMESPACE [ENVFILE]"
+    exit 1
+fi
+
+# Ensure ENVFILE file exists
+if [ ! -f "$ENVFILE" ]; then
+    echo "Error: Given ENVFILE: $ENVFILE does not exist."
+    exit 1
+fi
+
+# create k8s secret
+kubectl create secret generic ${SECRETNAME} \
+    -n ${NAMESPACE} \
+    --from-env-file ${ENVFILE} \
+    --dry-run=client \
+    -o yaml > tmp.yaml
+
+# seal the secret
+kubeseal -f tmp.yaml \
+    --controller-namespace cluster-sealedsecrets \
+    --controller-name cluster-sealedsecrets-sealed-secrets \
+    -o yaml > ${SECRETNAME}-sealedsecret.yaml
+
+# Cleanup
+rm tmp.yaml
