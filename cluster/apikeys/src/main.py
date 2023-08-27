@@ -21,6 +21,6 @@ async def root(path: str, request: Request, item: Optional[Item] = None):
     print(f"URL Path: {url_path}")
     print(f"Query Params: {query_params}")
     if item:
-        print(f"Body: {item.dict()}")
+        print(f"Body: {item.model_dump()}")
 
     return {"status_code": 200, "message": "OK"}
