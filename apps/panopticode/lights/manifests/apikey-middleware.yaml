@@ -1,0 +1,8 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-key-auth
+  namespace: panopticode
+spec:
+  forwardAuth:
+    address: http://traefik-apikeys-service.traefik-apikeys.svc.cluster.local
