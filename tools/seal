@@ -8,7 +8,7 @@ ENVFILE=${3:-.env}  # Default value is .env if not provided
 # Ensure SECRETNAME and NAMESPACE are provided
 if [ -z "$SECRETNAME" ] || [ -z "$NAMESPACE" ]; then
     echo "Error: Both SECRETNAME and NAMESPACE need to be provided."
-    echo "Usage: ./scriptname SECRETNAME NAMESPACE [ENVFILE]"
+    echo "Usage: seal SECRETNAME NAMESPACE [ENVFILE]"
     exit 1
 fi
 
