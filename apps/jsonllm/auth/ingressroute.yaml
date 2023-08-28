@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jsonllm-ingress
+  namespace: jsonllm
+spec:
+  routes:
+  - kind: Rule
+    match: Host(`jsonllm.k8s.jeromeswannack.com`)
+    middlewares:
+    - name: api-key-auth
+      namespace: jsonllm
+    services:
+    - kind: Service
+      name: jsonllm-service
+      namespace: jsonllm
+      port: 8000
+      scheme: http
