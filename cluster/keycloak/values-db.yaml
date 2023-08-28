@@ -1,0 +1,7 @@
+auth:
+  existingSecret: keycloak-db
+
+primary:
+  persistence:
+    enabled: true
+    existingClaim: keycloak-db-pvc
