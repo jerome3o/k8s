@@ -1,6 +1,8 @@
 # k8s
 
-Files related to a local k8s cluster
+This repo contains manifests relating to my personal kubernetes cluster
+
+It's a WIP and for learning, but also how I am hosting my various side projects
 
 ## Setup
 
