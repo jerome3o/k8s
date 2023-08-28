@@ -14,10 +14,4 @@ dagster-user-deployments:
         - name: minio-dev-access
 
 ingress:
-  enabled: true
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
-  dagsterWebserver:
-    path: "/"
-    pathType: Prefix
-    host: "dagster.k8s.jeromeswannack.com"
+  enabled: false

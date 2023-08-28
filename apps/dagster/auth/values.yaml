@@ -1,0 +1,19 @@
+config:
+  existingSecret: "oauth-dagster"
+
+extraArgs:
+  provider: "oidc"
+  oidc-issuer-url: "http://keycloak.k8s.jeromeswannack.com/realms/cluster"
+  email-domain: "*"
+  cookie-secure: "false"
+  upstream: "http://dagster-dagster-webserver.dagster.svc.cluster.local:80"
+  insecure-oidc-allow-unverified-email: "true"
+
+service:
+  type: ClusterIP
+  portNumber: 4180
+
+authenticatedEmailsFile:
+  enabled: false
+  template: ""
+  restricted_access: ""
