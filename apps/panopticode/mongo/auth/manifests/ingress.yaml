@@ -15,6 +15,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: mongo
+            name: mongo-auth-oauth2-proxy
             port:
-              number: 8081
+              number: 4180
