@@ -18,10 +18,24 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak
-          args: ["start-dev"]
+          args: ["start", "--hostname-strict=false"]
           env:
             - name: KC_PROXY
               value: "edge"
+            - name: KC_DB
+              value: postgres
+            - name: KC_DB_URL_HOST
+              value: keycloak-db-postgresql.keycloak.svc.cluster.local
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-db
+                  key: password
+            - name: KC_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-db
+                  key: username
           envFrom:
             - secretRef:
                 name: keycloak-admin
