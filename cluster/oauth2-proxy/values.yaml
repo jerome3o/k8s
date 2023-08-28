@@ -1,9 +1,9 @@
 config:
-  existingSecret: "oauth-testclient"
+  existingSecret: "oauth-hello"
 
 extraArgs:
   provider: "oidc"
-  oidc-issuer-url: "http://keycloak.k8s.jeromeswannack.com/realms/myrealm"
+  oidc-issuer-url: "http://keycloak.k8s.jeromeswannack.com/realms/cluster"
   email-domain: "*"
   cookie-secure: "false"
   upstream: "http://nginx-service.default.svc.cluster.local:80"
