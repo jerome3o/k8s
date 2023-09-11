@@ -1,4 +1,5 @@
 helm repo add nextcloud https://nextcloud.github.io/helm/
-helm repo update
+
+kubectl apply -f manifests/
 
 helm upgrade --install nextcloud nextcloud/nextcloud -n nextcloud --create-namespace
